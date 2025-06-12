@@ -48,7 +48,8 @@ drv:
 	if [ -d "$(KDIR)" ]; then \
 		$(MAKE) -C $(KDIR) M=$(PWD) modules; \
 	else \
-		echo "Kernel headers not found in $(KDIR). Skipping driver build."; \
+		echo "Kernel headers not found in $(KDIR)"; \
+		echo "Cannot build driver"; \
 	fi
 
 lib: libneo.a libneo.so
