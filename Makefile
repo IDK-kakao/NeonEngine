@@ -49,7 +49,7 @@ drv:
 		$(MAKE) -C $(KDIR) M=$(PWD) modules; \
 	else \
 		echo "Kernel headers not found in $(KDIR)"; \
-		echo "Cannot build driver"; \
+		echo "WSL not in"; \
 	fi
 
 lib: libneo.a libneo.so
