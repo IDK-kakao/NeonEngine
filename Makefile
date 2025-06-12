@@ -45,12 +45,7 @@ endif
 all: drv lib
 
 drv:
-	if [ -d "$(KDIR)" ]; then \
-		$(MAKE) -C $(KDIR) M=$(PWD) modules; \
-	else \
-		echo "Kernel headers not found in $(KDIR)"; \
-		echo "WSL not in"; \
-	fi
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
 lib: libneo.a libneo.so
 
@@ -86,9 +81,7 @@ uninstall:
 	sudo depmod -a
 
 clean:
-	if [ -d "$(KDIR)" ]; then \
-		$(MAKE) -C $(KDIR) M=$(PWD) clean; \
-	fi
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
 	rm -f *.o *.a *.so
 	rm -f neo_impl_a.o libneo_a.*
 
@@ -105,6 +98,7 @@ help:
 	@echo "  uninstall"
 	@echo "  clean"
 	@echo ""
+	@echo "Android build var:"
 	@echo "  NDK"
 	@echo "  API"
 	@echo "  ARCH"
